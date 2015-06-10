@@ -13,6 +13,6 @@ driver.wait(function() {
  return driver.getTitle().then(function(title) {
    return title === 'Hello World';
  });
-}, 6000);
+}, 3000);
 
 driver.quit();
