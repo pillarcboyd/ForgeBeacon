@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Forge Beacon",
   "main": "example.js",
-  "preferGlobal": true,
   "dependencies": {
     "connect": "^3.3.5",
     "selenium-webdriver": "^2.46.0",
