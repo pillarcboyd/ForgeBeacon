@@ -36,6 +36,26 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Background Img', function() {
+    this.timeout(15000);
+    var driver = new webdriver.Builder().forBrowser('firefox').
+    build();
+
+    driver.get('http://bit.ly/1Gh9Diz');
+
+
+
+
+
+    driver.findElement(By.tagName("body")).getCssValue('background').then(function(img){
+      assert.equal(img,'transparent url("./frontdoor.jpg") no-repeat fixed center center / cover ');
+
+  });
+
+    driver.quit();
+
+  });
+
 
 
 });
