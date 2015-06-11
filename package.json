@@ -1,0 +1,29 @@
+{
+  "name": "forgebeacon",
+  "version": "1.0.0",
+  "description": "Forge Beacon",
+  "main": "example.js",
+  "preferGlobal": true,
+  "dependencies": {
+    "connect": "^3.3.5",
+    "selenium-webdriver": "^2.46.0",
+    "serve-static": "^1.9.3",
+    "xcode": "^0.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pillarcboyd/ForgeBeacon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pillarcboyd/ForgeBeacon/issues"
+  },
+  "homepage": "https://github.com/pillarcboyd/ForgeBeacon#readme"
+}
