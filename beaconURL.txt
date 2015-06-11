@@ -1,0 +1,4 @@
+Beacon URL:
+http://bit.ly/1Gh9Diz
+Full URL:
+192.168.128.3:8080/helloworld.htm
