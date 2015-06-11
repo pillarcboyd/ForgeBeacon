@@ -11,7 +11,7 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://localhost:1337/helloworld.htm');
+    driver.get('http://localhost:8080/helloworld.htm');
 
     driver.getTitle().then(function(title) {
       assert.equal(title,'Pillar Technology');
@@ -25,7 +25,7 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://localhost:1337/helloworld.htm');
+    driver.get('http://localhost:8080/helloworld.htm');
 
 
     driver.findElement(By.tagName("body")).getText().then(function(bodyText){
