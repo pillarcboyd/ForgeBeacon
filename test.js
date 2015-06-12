@@ -1,6 +1,6 @@
 
 
-//http://bit.ly/1Gh9Diz
+//http://bit.ly/1cQbHmV
 var webAddress = "http://localhost:8080/",
 assert = require('assert'),
 test = require('selenium-webdriver/testing'),
