@@ -33,7 +33,7 @@ test.describe('Home Page', function() {
 
       driver.get(webAddress);
 
-      driver.findElement(By.name("checkInBtn")).getText().then(function(btnText){
+      driver.findElement(By.name("checkInBtn")).getAttribute("value").then(function(btnText){
         assert.equal(btnText,'Check In');    });
 
 
