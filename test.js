@@ -1,7 +1,7 @@
 
 
-
-
+//http://bit.ly/1Gh9Diz
+var webAddress = "http://localhost:8080/helloworld.htm"
 
 var assert = require('assert'),
 test = require('selenium-webdriver/testing'),
@@ -16,7 +16,7 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://bit.ly/1Gh9Diz');
+    driver.get(webAddress);
 
     driver.getTitle().then(function(title) {
       assert.equal(title,'Pillar Technology');
@@ -31,7 +31,7 @@ test.describe('Home Page', function() {
       var driver = new webdriver.Builder().forBrowser('firefox').
       build();
 
-      driver.get('http://bit.ly/1Gh9Diz');
+      driver.get(webAddress);
 
       driver.findElement(By.name("checkInBtn")).getText().then(function(btnText){
         assert.equal(btnText,'Check In');    });
@@ -45,11 +45,11 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://bit.ly/1Gh9Diz');
+    driver.get(webAddress);
 
 
-    driver.findElement(By.tagName("body")).getText().then(function(bodyText){
-      assert.equal(bodyText,'Hello World!');
+    driver.findElement(By.name("welcome")).getText().then(function(bodyText){
+      assert.equal(bodyText,'Welcome!');
     });
 
     driver.quit();
@@ -61,7 +61,7 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://bit.ly/1Gh9Diz');
+    driver.get(webAddress);
 
 
 
