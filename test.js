@@ -1,3 +1,8 @@
+
+
+
+
+
 var assert = require('assert'),
 test = require('selenium-webdriver/testing'),
 webdriver = require('selenium-webdriver'),
@@ -19,6 +24,21 @@ test.describe('Home Page', function() {
     driver.quit();
 
   });
+
+
+  test.it('Check In button', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').
+      build();
+
+      driver.get('http://bit.ly/1Gh9Diz');
+
+      driver.findElement(By.name("checkInBtn")).getText().then(function(btnText){
+        assert.equal(btnText,'Check In');    });
+
+
+  });
+
 
   test.it('Body test', function() {
     this.timeout(15000);
@@ -51,6 +71,9 @@ test.describe('Home Page', function() {
       assert.equal(img,'transparent url("./frontdoor.jpg") no-repeat fixed center center / cover ');
 
   });
+
+
+
 
     driver.quit();
 
