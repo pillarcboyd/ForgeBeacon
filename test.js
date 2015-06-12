@@ -19,10 +19,9 @@ test.describe('Home Page', function() {
     driver.getTitle().then(function(title) {
       assert.equal(title,'Pillar Technology');
     });
-    driver.quit();
+    driver.close();
 
   });
-
 
   test.it('Should display Check In button', function() {
       this.timeout(15000);
@@ -32,7 +31,19 @@ test.describe('Home Page', function() {
       driver.findElement(By.name("checkInBtn")).getAttribute("value").then(function(btnText){
         assert.equal(btnText,'Check In');
       });
-      driver.quit();
+      driver.close();
+
+  });
+
+  test.it('Should display Front door img', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
+        assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+      });
+      driver.close();
 
   });
 
