@@ -7,7 +7,7 @@ var httpServer = http.Server(app);
 app.use(express.static(__dirname));
 
 app.get('/', function(req, res){
-      res.sendFile(__dirname + '/index.htm');
+      res.sendFile(__dirname + '/index.html');
 });
 app.listen(port);
 console.log('Serving up %s on http://localhost:%s', __dirname, port);
