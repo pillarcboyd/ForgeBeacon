@@ -35,6 +35,18 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Should display logo img', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.xpath("//*[@id=\"titleBar\"]/span/img")).getAttribute("src").then(function(btnText){
+        assert.equal(btnText,'http://localhost:8080/images/pillar_logo.png');
+      });
+      driver.close();
+
+  });
+
   test.it('Should display Front door img', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
