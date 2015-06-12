@@ -11,7 +11,7 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://localhost:8080/helloworld.htm');
+    driver.get('http://bit.ly/1Gh9Diz');
 
     driver.getTitle().then(function(title) {
       assert.equal(title,'Pillar Technology');
@@ -25,12 +25,32 @@ test.describe('Home Page', function() {
     var driver = new webdriver.Builder().forBrowser('firefox').
     build();
 
-    driver.get('http://localhost:8080/helloworld.htm');
+    driver.get('http://bit.ly/1Gh9Diz');
 
 
     driver.findElement(By.tagName("body")).getText().then(function(bodyText){
       assert.equal(bodyText,'Hello World!');
     });
+
+    driver.quit();
+
+  });
+
+  test.it('Background Img', function() {
+    this.timeout(15000);
+    var driver = new webdriver.Builder().forBrowser('firefox').
+    build();
+
+    driver.get('http://bit.ly/1Gh9Diz');
+
+
+
+
+
+    driver.findElement(By.tagName("body")).getCssValue('background').then(function(img){
+      assert.equal(img,'transparent url("./frontdoor.jpg") no-repeat fixed center center / cover ');
+
+  });
 
     driver.quit();
 
