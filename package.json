@@ -15,6 +15,9 @@
   "scripts": {
     "test": "mocha"
   },
+ "bin": {
+    "module-name": ".node_modules/module-name/bin/module-name"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pillarcboyd/ForgeBeacon.git"
