@@ -3,6 +3,7 @@
 //http://bit.ly/1cQbHmV
 var webAddress = "http://localhost:8080/",
 assert = require('assert'),
+http = require('http'),
 test = require('selenium-webdriver/testing'),
 webdriver = require('selenium-webdriver'),
 By = require('selenium-webdriver').By;
@@ -97,5 +98,17 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Returns HTTP 200 when email is sent', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      http.get('http://localhost:8080/send', function(response) {
+        assert.equal(response.statusCode, 200);
+        done;
+      });
+
+
+      driver.close();
+
+  });
 
 });
