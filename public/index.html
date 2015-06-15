@@ -43,9 +43,14 @@
 								<div class="6u 12u(mobile)">
 
 									<!-- Banner Copy -->
-										<p>Welcome to The Forge by Pillar Technology! We are happy to have you here today.
+										<p id="topMsg">Welcome to The Forge by Pillar Technology! We are happy to have you here today.
 											 Please take a moment to check in and a team member will be with you shortly.</p>
-										<input type="submit" class="button-big" name="checkInBtn" value="Check In"/>
+										<input type="submit" class="button-big" name="checkInBtn" value="Check In" onclick="updateTopMsg()"/>
+										<script type="text/javascript">
+										function updateTopMsg() {
+											document.getElementById('topMsg').innerHTML="Thank you! Please have a seat. We'll be right with you!";
+										}
+										</script>
 
 								</div>
 								<div class="6u 12u(mobile)">
