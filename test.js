@@ -85,4 +85,17 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Should have LLC Message', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.id("copyright")).getText().then(function(welcomeText){
+        assert.equal(welcomeText, "Pillar Technology Group, LLC @ 2015");
+      });
+      driver.close();
+
+  });
+
+
 });
