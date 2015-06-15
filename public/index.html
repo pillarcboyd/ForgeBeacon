@@ -6,6 +6,20 @@
 -->
 <html>
 	<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+				var from,to,subject,text;
+				$("#checkInBtn").click(function(){
+					document.getElementById('topMsg').innerHTML="Thank you! Please have a seat. We'll be right with you!";
+					$.get("http://localhost:8080/send",function(data){
+							if(data=="sent")
+							{
+							}
+					});
+				});
+		});
+	</script>
 		<title>Pillar Technology</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,12 +59,7 @@
 									<!-- Banner Copy -->
 										<p id="topMsg">Welcome to The Forge by Pillar Technology! We are happy to have you here today.
 											 Please take a moment to check in and a team member will be with you shortly.</p>
-										<input type="submit" class="button-big" name="checkInBtn" value="Check In" onclick="updateTopMsg()"/>
-										<script type="text/javascript">
-										function updateTopMsg() {
-											document.getElementById('topMsg').innerHTML="Thank you! Please have a seat. We'll be right with you!";
-										}
-										</script>
+										<input type="submit" class="button-big" name="checkInBtn" id="checkInBtn" value="Check In" />
 
 								</div>
 								<div class="6u 12u(mobile)">
