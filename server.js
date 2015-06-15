@@ -1,11 +1,11 @@
-var port = 'process.env.port_number';
+require('dotenv').load();
+var port = process.env.port_number;
 var servedFiles = __dirname + '/public';
 var express = require('express');
 var app = express();
 var http = require('http');
 var nodemailer = require('nodemailer');
 var httpServer = http.Server(app);
-require('dotenv').load();
 var smtpTransport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
