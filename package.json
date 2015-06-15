@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Forge Beacon",
   "main": "example.js",
-  "dependencies": {
+  "devDependencies": {
     "connect": "^3.3.5",
     "dotenv": "^1.1.0",
     "express": "^4.12.4",
@@ -12,9 +12,6 @@
     "selenium-webdriver": "^2.46.0",
     "serve-static": "^1.9.3",
     "xcode": "^0.7.0"
-  },
-  "devDependencies": {
-    "mocha": "^2.2.5"
   },
   "scripts": {
     "test": "mocha",
