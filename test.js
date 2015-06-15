@@ -71,4 +71,18 @@ test.describe('Home Page', function() {
       driver.close();
 
   });
+
+
+  test.it('Should have welcome message', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.xpath("//*[@id=\"banner\"]/div/div/div[1]/p")).getText().then(function(welcomeText){
+        assert.equal(welcomeText, "Welcome to The Forge by Pillar Technology! We are happy to have you here today. Please take a moment to check in and a team member will be with you shortly.");
+      });
+      driver.close();
+
+  });
+
 });
