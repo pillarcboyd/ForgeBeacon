@@ -18,4 +18,4 @@ To set up the project:
 * Install dependencies via <code>npm install [-g]</code>
 * Make a copy the file .envtemplate and name it .env, then fill in the parameters as needed (<b>Do not edit or rename</b> the .envtemplate file).
 
-<b>Note:</b> Be sure to keep package.json up-to-date when adding new modules to the project via <code>npm install $PACKAGE --save</code>
+<b>Note:</b> Be sure to keep package.json up-to-date when adding new modules to the project via <code>npm install $PACKAGE --save-dev</code>
