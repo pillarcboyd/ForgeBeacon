@@ -1,5 +1,5 @@
 var port = '8080';
-var servedFiles = __dirname;
+var servedFiles = __dirname + '/public';
 var express = require('express');
 var app = express();
 var http = require('http');
