@@ -1,26 +1,27 @@
-var port = '8080';
+var port = 'process.env.port_number';
 var servedFiles = __dirname + '/public';
 var express = require('express');
 var app = express();
 var http = require('http');
 var nodemailer = require('nodemailer');
 var httpServer = http.Server(app);
-
+require('dotenv').load();
 var smtpTransport = nodemailer.createTransport({
-service: "Gmail",
-auth: {
-user: "test@test.com",
-pass: "test@test.com"
-}
+  service: "Gmail",
+  auth: {
+    user: process.env.mail_user,
+    pass: process.env.mail_pass
+  }
 });
 
+
 app.get('/send',function(req,res){
-  console.log("Made it to send");
-  var mailOptions={
-  from: 'test@test.com',
-  to : 'test@test.com',
-  subject : 'Front Door!',
-  text : 'Someone is here to see you! Fly you fool!'
+    console.log("Made it to send");
+    var mailOptions={
+    from: process.env.mail_from,
+    to : process.env.mail_to,
+    subject : 'Front Door!',
+    text : 'Someone is here to see you! Fly you fool!'
   }
   console.log(mailOptions);
   smtpTransport.sendMail(mailOptions, function(error, response){
