@@ -1,3 +1,7 @@
+###Copy this file to .env and populate the below values.
+###Example:
+###mail_user=user@website.com
+
 mail_user=
 mail_pass=
 mail_from=
