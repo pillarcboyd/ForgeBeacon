@@ -66,7 +66,7 @@ test.describe('Home Page', function() {
 
       driver.findElement(By.name("checkInBtn")).click();
       driver.findElement(By.name("responseMsg")).getAttribute("value").then(function(btnText){
-        assert.equal(btnText,'Some confirmation text');
+        assert.equal(btnText,'Thank you! Please have a seat. We\'ll be right with you!');
       });
       driver.close();
 
