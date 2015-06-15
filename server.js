@@ -9,16 +9,16 @@ var httpServer = http.Server(app);
 var smtpTransport = nodemailer.createTransport({
 service: "Gmail",
 auth: {
-user: "test@test.com",
-pass: "test@test.com"
+user: "pillartest@pillartechnology.com",
+pass: "noConstraints!"
 }
 });
 
 app.get('/send',function(req,res){
   console.log("Made it to send");
   var mailOptions={
-  from: 'test@test.com',
-  to : 'test@test.com',
+  from: 'pillartest@pillartechnology.com',
+  to : 'rucker@pillartechnology.com',
   subject : 'Front Door!',
   text : 'Someone is here to see you! Fly you fool!'
   }
@@ -26,11 +26,9 @@ app.get('/send',function(req,res){
   smtpTransport.sendMail(mailOptions, function(error, response){
   if(error){
   console.log(error);
-  res.end("error");
-  }else{
-  console.log("Message sent: " + response.message);
-  res.end("sent");
+  res.sendStatus(500);
   }
+  res.end();
   });
 });
 
