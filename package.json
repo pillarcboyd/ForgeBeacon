@@ -13,10 +13,8 @@
     "mocha": "^2.2.5"
   },
   "scripts": {
-    "test": "mocha"
-  },
- "bin": {
-    "module-name": ".node_modules/module-name/bin/module-name"
+    "test": "mocha",
+    "mocha": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
