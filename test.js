@@ -27,6 +27,18 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Should display Who are you here to see DDL', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.id("notifyDL")).getAttribute("name").then(function(notifyDLName){
+        assert.equal(notifyDLName,'notifyDL');
+      });
+      driver.close();
+
+  });
+
   test.it('Should display Check In button', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
