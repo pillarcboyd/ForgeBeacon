@@ -22,11 +22,13 @@ app.get('/send',function(req,res){
     subject : 'Front Door!',
     text : 'Someone is here to see you! Fly you fool!'
   }
-  console.log("Sending e-mail to " + process.env.mail_to);
+
   smtpTransport.sendMail(mailOptions, function(error, response){
     if(error){
       console.log(error);
       res.sendStatus(500);
+    } else {
+      console.log("E-mail sent to " + process.env.mail_to);
     }
     res.end();
   });
