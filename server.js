@@ -16,20 +16,19 @@ var smtpTransport = nodemailer.createTransport({
 
 
 app.get('/send',function(req,res){
-    console.log("Made it to send");
-    var mailOptions={
+  var mailOptions={
     from: process.env.mail_from,
     to : process.env.mail_to,
     subject : 'Front Door!',
     text : 'Someone is here to see you! Fly you fool!'
   }
-  console.log(mailOptions);
+  console.log("Sending e-mail to " + process.env.mail_to);
   smtpTransport.sendMail(mailOptions, function(error, response){
-  if(error){
-  console.log(error);
-  res.sendStatus(500);
-  }
-  res.end();
+    if(error){
+      console.log(error);
+      res.sendStatus(500);
+    }
+    res.end();
   });
 });
 
