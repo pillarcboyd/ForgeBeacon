@@ -5,11 +5,12 @@ var webAddress = "http://localhost:8080/",
 assert = require('assert'),
 http = require('http'),
 test = require('selenium-webdriver/testing'),
-webdriver = require('selenium-webdriver'),
+webdriver = require('selenium-webdriver') 
+require('chai').should()
+require('webdriverjs-helper');
 By = require('selenium-webdriver').By,
 smallLayoutWidth = 730,
 smallLayoutHeight = 900;
-
 
 
 
@@ -34,6 +35,18 @@ test.describe('Home Page', function() {
 
       driver.findElement(By.id("notifyDL")).getAttribute("name").then(function(notifyDLName){
         assert.equal(notifyDLName,'notifyDL');
+      });
+      driver.close();
+
+  });
+
+  test.it('Should default to Who are you here to see in DDL', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.dropdownlist('#notifyDL').values(function(values){
+        assert(values.should.eql(["WAUH2S"]));
       });
       driver.close();
 
