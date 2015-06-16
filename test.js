@@ -103,14 +103,18 @@ test.describe('Home Page', function() {
 
   });
 
-  test.it('Should have LLC Message', function() {
+  test.it('Should have LLC Message and Hyperlink', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
       driver.get(webAddress);
 
-      driver.findElement(By.id("copyright")).getText().then(function(welcomeText){
-        assert.equal(welcomeText, "Pillar Technology Group, LLC @ 2015");
+      driver.findElement(By.xpath("//*[@id=\"copyright\"]/a")).getText().then(function(copyrightText){
+        assert.equal(copyrightText, "Pillar Technology Group, LLC @ 2015");
       });
+      driver.findElement(By.xpath("//*[@id=\"copyright\"]/a")).getAttribute("href").then(function(copyrightHref){
+        assert.equal(copyrightHref, "http://www.pillartechnology.com/");
+      });
+
       driver.close();
 
   });
