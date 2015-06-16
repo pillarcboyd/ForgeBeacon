@@ -5,7 +5,13 @@ $(document).ready(function(){
       $.get("http://localhost:8080/send",function(data){
           if(data=="sent")
           {
+
           }
+
       });
+      $('html,body').animate({ scrollTop: $("#seatNSculptureImg").offset().top},2000);
+
+
     });
+
 });

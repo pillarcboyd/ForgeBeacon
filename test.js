@@ -10,6 +10,7 @@ By = require('selenium-webdriver').By;
 
 
 
+
 test.describe('Home Page', function() {
   test.it('Should serve correct page', function() {
     this.timeout(15000);
@@ -98,17 +99,52 @@ test.describe('Home Page', function() {
 
   });
 
+
+
+
   test.it('Returns HTTP 200 when email is sent', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
       http.get('http://localhost:8080/send', function(response) {
         assert.equal(response.statusCode, 200);
-        done;
       });
 
 
       driver.close();
 
   });
+
+  test.it('Should scroll to sculpture IMG!!!!', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.manage().window().setSize(735,500);
+      driver.get(webAddress);
+
+
+
+      driver.findElement(By.name("checkInBtn")).click();
+      var element =driver.findElement(By.id("seatNSculptureImg"));
+
+      setTimeout(function(){
+
+        element.getLocation().then(function(result){
+
+          assert.equal(result.x,0);
+          assert.equal(result.y,0);
+
+        });
+
+      },3000);
+
+
+
+
+
+
+
+      driver.close();
+  });
+
+
 
 });
