@@ -6,7 +6,9 @@ assert = require('assert'),
 http = require('http'),
 test = require('selenium-webdriver/testing'),
 webdriver = require('selenium-webdriver'),
-By = require('selenium-webdriver').By;
+By = require('selenium-webdriver').By,
+smallLayoutWidth = 730,
+smallLayoutHeight = 900;
 
 
 
@@ -43,6 +45,21 @@ test.describe('Home Page', function() {
 
       driver.findElement(By.xpath("//*[@id=\"titleBar\"]/span/img")).getAttribute("src").then(function(btnText){
         assert.equal(btnText,'http://localhost:8080/images/pillar_logo.png');
+      });
+      driver.close();
+
+  });
+
+  test.it('Resizes header to match logo size when window is narrow', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.manage().window().setSize(smallLayoutWidth, smallLayoutHeight);
+      driver.get(webAddress);
+
+      var titleBarHeight = driver.findElement(By.id('titleBar')).getCssValue('height').then(function(titleBarHeight) {
+        var logoHeight = driver.findElement(By.id('logoImg')).getCssValue('height').then(function(logoHeight) {
+          assert(logoHeight <= titleBarHeight);
+        });
       });
       driver.close();
 

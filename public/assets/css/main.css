@@ -1101,6 +1101,10 @@
 		margin-bottom: 0 !important;
 	}
 
+	#logoImg {
+		height: 44px;
+	}
+
 /* Multi-use */
 
 	.link-list li {
