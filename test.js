@@ -5,7 +5,7 @@ var webAddress = "http://localhost:8080/",
 assert = require('assert'),
 http = require('http'),
 test = require('selenium-webdriver/testing'),
-webdriver = require('selenium-webdriver') 
+webdriver = require('selenium-webdriver')
 require('chai').should()
 require('webdriverjs-helper');
 By = require('selenium-webdriver').By,
@@ -175,6 +175,22 @@ test.describe('Home Page', function() {
       driver.close();
 
   });
+
+
+
+
+    test.it('Should have input text field and label', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+
+        driver.findElement(By.id("visitorName")).getAttribute("placeholder").then(function(visitorName){
+          assert.equal(visitorName,'Enter Your Name');
+        });
+        driver.close();
+
+    });
 
 
 
