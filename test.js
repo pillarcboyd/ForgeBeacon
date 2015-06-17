@@ -190,6 +190,32 @@ test.describe('Home Page', function() {
 
     });
 
+    test.it('Visitor Name field should have border-radius', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).getCssValue('border-top-left-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-top-right-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-bottom-left-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-bottom-right-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        
+        driver.close();
+
+    });
+
+
+
+
+
     test.it('Should have input text field and label', function() {
         this.timeout(15000);
         var driver = new webdriver.Builder().forBrowser('firefox').build();
