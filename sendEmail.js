@@ -3,13 +3,18 @@ require('dotenv').load();
 
 module.exports = {
   createEmail: function (toAddress, nameAtDoor) {
-    sendEmail(toAddress, nameAtDoor)
+    sendEmail(toAddress, setDefaultNameAtDoor(nameAtDoor))
   },
 };
 
+function setDefaultNameAtDoor(nameAtDoor){
+  if (typeof nameAtDoor == 'undefined'){nameAtDoor = "Someone"}
+  return nameAtDoor;
+}
+
 function sendEmail(toAddress, nameAtDoor) {
   console.log("Woah, "+nameAtDoor+" is here!")
-  smtpTransport.sendMail(mailOptions, function(error, response){
+  smtpTransport.sendMail(mailOptions(toAddress, nameAtDoor), function(error, response){
 
     if(error){
       console.log(error);
@@ -28,9 +33,12 @@ var smtpTransport = nodemailer.createTransport({
   }
 });
 
-var mailOptions={
-  from: process.env.mail_from,
-  to : process.env.mail_to,
-  subject : 'Front Door!',
-  text : 'Someone is here to see you! Fly you fool!'
+function mailOptions(toAddress, nameAtDoor){
+  var output = {
+    from: process.env.mail_from,
+    to : toAddress,
+    subject : nameAtDoor + ' is at the Front Door!',
+    text : nameAtDoor + ' is here to see you! Fly you fool!'
+  }
+  return output;
 }

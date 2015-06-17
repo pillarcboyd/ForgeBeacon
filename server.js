@@ -11,7 +11,7 @@ var sendEmail = require('./sendEmail.js');
 
 
 app.get('/send',function(req,res){
-  sendEmail.createEmail("froggy@frogs.net", "Ned Ryerson");
+  sendEmail.createEmail(process.env.mail_to);
 });
 
 app.use(express.static(servedFiles));
