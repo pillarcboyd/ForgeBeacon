@@ -91,6 +91,22 @@ test.describe('Home Page', function() {
 
   });
 
+  test.it('Should rotate image after checken Click', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
+        assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+        driver.findElement(By.name("checkInBtn")).click();
+        driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
+          assert.equal(btnText,'http://localhost:8080/images/SeatNSculpture.JPG');
+      	});
+      });
+      driver.close();
+
+  });
+
   test.it('Should display Front door img', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
