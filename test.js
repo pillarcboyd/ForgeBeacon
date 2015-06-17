@@ -5,13 +5,14 @@ var webAddress = "http://localhost:8080/",
 assert = require('assert'),
 http = require('http'),
 test = require('selenium-webdriver/testing'),
-webdriver = require('selenium-webdriver'),
+webdriver = require('selenium-webdriver')
+require('chai').should()
+require('webdriverjs-helper');
 By = require('selenium-webdriver').By,
 should = require('should'),
 request = require('request'),
 smallLayoutWidth = 730,
 smallLayoutHeight = 900;
-
 
 
 
@@ -26,6 +27,30 @@ test.describe('Home Page', function() {
       assert.equal(title,'Pillar Technology');
     });
     driver.close();
+
+  });
+
+  test.it('Should display Who are you here to see DDL', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.id("notifyDL")).getAttribute("name").then(function(notifyDLName){
+        assert.equal(notifyDLName,'notifyDL');
+      });
+      driver.close();
+
+  });
+
+  test.it('Should default to Who are you here to see in DDL', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.dropdownlist('#notifyDL').values(function(values){
+        assert(values.should.eql(["WAUH2S"]));
+      });
+      driver.close();
 
   });
 
@@ -63,6 +88,22 @@ test.describe('Home Page', function() {
         var logoHeight = driver.findElement(By.id('logoImg')).getCssValue('height').then(function(logoHeight) {
           assert(logoHeight <= titleBarHeight);
         });
+      });
+      driver.close();
+
+  });
+
+  test.it('Should rotate image after checken Click', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
+        assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+        driver.findElement(By.name("checkInBtn")).click();
+        driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
+          assert.equal(btnText,'http://localhost:8080/images/SeatNSculpture.JPG');
+      	});
       });
       driver.close();
 
@@ -147,12 +188,63 @@ test.describe('Home Page', function() {
       }, function (error, response, body) {
 
         if (!error && response.statusCode === 200) {
-          console.log(body) // Print the json response
+          //console.log(body) // Print the json response
         }
       })
 
       driver.close();
 
-  });
+    });
 
-});
+    test.it('Should have css class on visitorName', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).getAttribute("class").then(function(visitorNameClass){
+          assert.equal(visitorNameClass,'roundedTextInput');
+        });
+        driver.close();
+
+    });
+
+    test.it('Visitor Name field should have border-radius', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).getCssValue('border-top-left-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-top-right-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-bottom-left-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+        driver.findElement(By.id("visitorName")).getCssValue('border-bottom-right-radius').then(function(cssValue){
+          assert.equal(cssValue,'5px');
+        });
+
+        driver.close();
+
+    });
+
+
+
+
+
+    test.it('Should have input text field and label', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).getAttribute("placeholder").then(function(visitorName){
+          assert.equal(visitorName,'Enter Your Name');
+        });
+        driver.close();
+
+    });
+
+
+  });
