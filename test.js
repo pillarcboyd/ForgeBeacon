@@ -178,12 +178,22 @@ test.describe('Home Page', function() {
 
 
 
+    test.it('Should have css class on visitorName', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).getAttribute("class").then(function(visitorNameClass){
+          assert.equal(visitorNameClass,'roundedTextInput');
+        });
+        driver.close();
+
+    });
 
     test.it('Should have input text field and label', function() {
         this.timeout(15000);
         var driver = new webdriver.Builder().forBrowser('firefox').build();
         driver.get(webAddress);
-
 
         driver.findElement(By.id("visitorName")).getAttribute("placeholder").then(function(visitorName){
           assert.equal(visitorName,'Enter Your Name');
