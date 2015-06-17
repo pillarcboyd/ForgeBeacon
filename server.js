@@ -6,6 +6,7 @@ var app = express();
 var http = require('http');
 var nodemailer = require('nodemailer');
 var httpServer = http.Server(app);
+var contactsJSON = require('./data/contacts.json')
 var smtpTransport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
@@ -32,6 +33,12 @@ app.get('/send',function(req,res){
   res.end();
   });
 });
+
+app.get('/contacts',function(req,res){
+  console.log("Requesting contacts");
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify(contactsJSON));
+})
 
 app.use(express.static(servedFiles));
 
