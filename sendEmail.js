@@ -13,13 +13,12 @@ function setDefault(valueAsIs, defaultValue){
 }
 
 function sendEmail(toAddress, nameAtDoor) {
-  smtpTransport.sendMail(mailOptions(toAddress, nameAtDoor), function(error, response){
-
+  mailOptions = setMailOptions(toAddress, nameAtDoor)
+  smtpTransport.sendMail(mailOptions, function(error, response){
     if(error){
       console.log(error);
-      res.sendStatus(500);
     } else {
-      console.log("E-mail sent to " + process.env.mail_to);
+      console.log("E-mail sent to " + mailOptions.to + " with subject \'" + mailOptions.subject + "\'");
     }
   });
 }
@@ -32,7 +31,7 @@ var smtpTransport = nodemailer.createTransport({
   }
 });
 
-function mailOptions(toAddress, nameAtDoor){
+function setMailOptions(toAddress, nameAtDoor){
   var output = {
     from: process.env.mail_from,
     to: toAddress,
