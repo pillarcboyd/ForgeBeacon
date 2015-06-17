@@ -202,6 +202,7 @@ test.describe('Home Page', function() {
 
     });
 
+
     test.it('Should have css class on visitorName', function() {
         this.timeout(15000);
         var driver = new webdriver.Builder().forBrowser('firefox').build();
@@ -237,7 +238,20 @@ test.describe('Home Page', function() {
     });
 
 
+    test.it('Should email name entered in visitorName', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
 
+        driver.findElement(By.id("visitorName")).sendKeys("Test Visitor");
+        driver.findElement(By.name("checkInBtn")).click()
+        driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
+          assert.equal(visitorQuery, "?userName=Test Visitor");
+        });
+          
+        driver.close();
+
+    });
 
 
     test.it('Should have input text field and label', function() {
