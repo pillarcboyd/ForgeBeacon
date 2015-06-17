@@ -7,9 +7,18 @@ var http = require('http');
 var httpServer = http.Server(app);
 var contactsJSON = require('./data/contacts.json')
 var sendEmail = require('./sendEmail.js');
+var url = require('url');
 
 app.get('/send',function(req,res){
-  sendEmail.createEmail(process.env.mail_to);
+  var parameter = url.parse(req.url,true).query;
+  var usrName = parameter.userName;
+
+  console.log(parameter);
+  sendEmail.createEmail(process.env.mail_to,usrName);
+  res.writeHead(200, { 'Content-Type': 'application/json'  });
+
+  res.end(JSON.stringify(parameter));
+
 });
 
 app.get('/contacts',function(req,res){

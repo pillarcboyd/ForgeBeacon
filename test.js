@@ -11,6 +11,7 @@ require('webdriverjs-helper');
 By = require('selenium-webdriver').By,
 should = require('should'),
 request = require('request'),
+url = require('url'),
 smallLayoutWidth = 730,
 smallLayoutHeight = 900;
 
@@ -166,12 +167,20 @@ test.describe('Home Page', function() {
 
 
 
-  test.it('Returns HTTP 200 when email is sent', function() {
+  test.it('Should parse Query string when email is sent', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
-      http.get('http://localhost:8080/send', function(response) {
-        assert.equal(response.statusCode, 200);
+
+
+      request({
+      url: 'http://localhost:8080/send?userName=donAbney',
+      json: true
+      }, function (error, response, body) {
+          assert.equal(body.userName, "donAbney");
       });
+
+
+
 
 
       driver.close();
@@ -186,10 +195,7 @@ test.describe('Home Page', function() {
       url: 'http://localhost:8080/contacts',
       json: true
       }, function (error, response, body) {
-
-        if (!error && response.statusCode === 200) {
-          //console.log(body) // Print the json response
-        }
+        assert.equal(response.statusCode,200);
       })
 
       driver.close();
