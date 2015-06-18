@@ -172,7 +172,7 @@ test.describe('Home Page', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
       request({
-      url: 'http://localhost:8080/send?userName=donAbney',
+      url: webAddress + 'send?userName=donAbney',
       json: true
       }, function (error, response, body) {
           assert.equal(body.userName, "donAbney");
