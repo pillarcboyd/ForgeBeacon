@@ -27,6 +27,7 @@ $(document).ready(function(){
     $("#notifyDL").change(function(){
       var imageName = $("#notifyDL").val();
       document.getElementById('imageDock').src = "images/" + imageName + ".jpg";
+      document.getElementById('checkInBtn').disabled = false;
       });
 
 });

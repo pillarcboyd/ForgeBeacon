@@ -101,6 +101,7 @@ test.describe('Home Page', function() {
 
       driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
         assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+        driver.dropdownlist('#notifyDL').option("dabney");
         driver.findElement(By.name("checkInBtn")).click();
         driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
           assert.equal(btnText,'http://localhost:8080/images/SeatNSculpture.JPG');
@@ -126,7 +127,7 @@ test.describe('Home Page', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
       driver.get(webAddress);
-
+      driver.dropdownlist('#notifyDL').option("dabney");
       driver.findElement(By.name("checkInBtn")).click();
       driver.findElement(By.id("topMsg")).getAttribute("innerHTML").then(function(message){
         assert.equal(message,'Thank you! Please have a seat. We\'ll be right with you!');
@@ -252,6 +253,7 @@ test.describe('Home Page', function() {
         driver.get(webAddress);
 
         driver.findElement(By.id("visitorName")).sendKeys("Test Visitor");
+        driver.dropdownlist('#notifyDL').option("dabney");
         driver.findElement(By.name("checkInBtn")).click()
         driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
           assert.equal(visitorQuery, "Test Visitor");
@@ -266,6 +268,7 @@ test.describe('Home Page', function() {
         var driver = new webdriver.Builder().forBrowser('firefox').build();
         driver.get(webAddress);
 
+        driver.dropdownlist('#notifyDL').option("dabney");
         driver.findElement(By.name("checkInBtn")).click()
         driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
           assert.equal(visitorQuery, "Someone");
@@ -309,7 +312,6 @@ test.describe('Home Page', function() {
       driver.get(webAddress);
 
       driver.findElement(By.name("checkInBtn")).getAttribute("disabled").then(function(value){
-        console.log(value);
         assert.equal(value,"true");
       });
 
@@ -317,6 +319,21 @@ test.describe('Home Page', function() {
 
     });
 
+
+    test.it('Button should enable when dropdown item is selected', function() {
+
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.dropdownlist('#notifyDL').option("dabney");
+      driver.findElement(By.name("checkInBtn")).getAttribute("disabled").then(function(value){
+        assert.equal(value,null);
+      });
+
+      driver.close();
+
+    });
 
 
   });
