@@ -183,7 +183,7 @@ test.describe('Home Page', function() {
       var driver = new webdriver.Builder().forBrowser('firefox').build();
 
       request({
-      url: 'http://localhost:8080/contacts',
+      url: webAddress + 'contacts',
       json: true
       }, function (error, response, body) {
 
@@ -191,6 +191,20 @@ test.describe('Home Page', function() {
           //console.log(body) // Print the json response
         }
       })
+
+      driver.close();
+
+    });
+
+    test.it('At least one pillar name is displayed in the Who Are You Here To See dropdown list', function() {
+
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElements(By.className("pillarContact")).then(function(pillarContacts){
+        assert(pillarContacts.length.should.greaterThan(0));
+      });
 
       driver.close();
 
