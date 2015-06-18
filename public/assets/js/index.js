@@ -22,3 +22,11 @@ $(document).ready(function(){
 
     });
 });
+
+$(document).ready(function(){
+  $.getJSON("/contacts", function(data){
+    $(data.contacts).each(function(iIndex, sElement) {
+      $('#notifyDL').append('<option class="pillarContact" value='+ sElement.id + '>' + sElement.name + '</option>');
+    });
+  });
+});
