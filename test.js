@@ -302,6 +302,21 @@ test.describe('Home Page', function() {
 
     });
 
+    test.it('Has a disabled check in button when page is first loaded', function() {
+
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.findElement(By.name("checkInBtn")).getAttribute("disabled").then(function(value){
+        console.log(value);
+        assert.equal(value,"true");
+      });
+
+      driver.close();
+
+    });
+
 
 
   });
