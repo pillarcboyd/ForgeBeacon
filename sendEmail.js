@@ -8,7 +8,8 @@ module.exports = {
 };
 
 function setDefault(valueAsIs, defaultValue){
-  if (typeof valueAsIs == 'undefined'){valueAsIs = defaultValue}
+  if (valueAsIs == ''){
+    valueAsIs = defaultValue}
   return valueAsIs;
 }
 
