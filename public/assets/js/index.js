@@ -24,6 +24,14 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    $("#notifyDL").change(function(){
+      var imageName = $("#notifyDL").val();
+      document.getElementById('imageDock').src = "images/" + imageName + ".jpg";
+      });
+
+});
+
+$(document).ready(function(){
   $.getJSON("/contacts", function(data){
     $(data.contacts).each(function(iIndex, sElement) {
       $('#notifyDL').append('<option class="pillarContact" value='+ sElement.id + '>' + sElement.name + '</option>');

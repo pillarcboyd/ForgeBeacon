@@ -287,5 +287,21 @@ test.describe('Home Page', function() {
 
     });
 
+    test.it('Head Shots for dropdown list change', function() {
+
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+      driver.dropdownlist('#notifyDL').option("dabney");
+      driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(imgSrc){
+         assert.equal(imgSrc,'http://localhost:8080/images/dabney.jpg');
+      });
+
+      driver.close();
+
+    });
+
+
 
   });
