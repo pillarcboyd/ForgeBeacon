@@ -1,7 +1,7 @@
 {"contacts":[
   {"id":"dabney", "name":"Don Abney", "imagePath":"/images/dabney.jpg"},
   {"id":"mkaufmann", "name":"Mary Kaufmann", "imagePath":"/images/mkaufmann.jpg"},
-  {"id":"mvanleet", "name":"Matt VanVleet", "imagePath":"/images/mvanleet.jpg"},
+  {"id":"mvanvleet", "name":"Matt VanVleet", "imagePath":"/images/mvanvleet.jpg"},
   {"id":"syaffe", "name":"Steve Yaffe", "imagePath":"/images/syaffe.jpg"},
   {"id":"wteam", "name":"Welcome Team", "imagePath":"/images/frontdoor.jpg"}
   ]}
