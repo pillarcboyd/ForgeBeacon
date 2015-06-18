@@ -3,15 +3,9 @@ require('dotenv').load();
 
 module.exports = {
   createEmail: function (toAddress, nameAtDoor) {
-    sendEmail(toAddress, setDefault(nameAtDoor, "Someone"))
+    sendEmail(toAddress, nameAtDoor)
   },
 };
-
-function setDefault(valueAsIs, defaultValue){
-  if (valueAsIs == ''){
-    valueAsIs = defaultValue}
-  return valueAsIs;
-}
 
 function sendEmail(toAddress, nameAtDoor) {
   mailOptions = setMailOptions(toAddress, nameAtDoor)

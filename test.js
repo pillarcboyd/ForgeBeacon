@@ -167,25 +167,20 @@ test.describe('Home Page', function() {
 
 
 
-  test.it('Should parse Query string when email is sent', function() {
+  test.it('Should parse Query string when email is sent with user name entered', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
-
-
       request({
       url: 'http://localhost:8080/send?userName=donAbney',
       json: true
       }, function (error, response, body) {
           assert.equal(body.userName, "donAbney");
       });
-
-
-
-
-
       driver.close();
 
   });
+
+
 
   test.it('Returns JSON file for contact information', function() {
       this.timeout(15000);
@@ -246,13 +241,26 @@ test.describe('Home Page', function() {
         driver.findElement(By.id("visitorName")).sendKeys("Test Visitor");
         driver.findElement(By.name("checkInBtn")).click()
         driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
-          assert.equal(visitorQuery, "?userName=Test Visitor");
+          assert.equal(visitorQuery, "Test Visitor");
         });
-          
+
         driver.close();
 
     });
 
+    test.it('No email entered in textbox', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.name("checkInBtn")).click()
+        driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
+          assert.equal(visitorQuery, "Someone");
+        });
+
+        driver.close();
+
+    });
 
     test.it('Should have input text field and label', function() {
         this.timeout(15000);
