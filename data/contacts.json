@@ -1,7 +1,7 @@
 {"contacts":[
-  {"id":"dabney", "name":"Don Abney", "email":"+DonAbney"},
-  {"id":"mkaufmann", "name":"Mary Kaufmann", "email":"+MaryKaufmann"},
-  {"id":"mvanvleet", "name":"Matt VanVleet", "email":"+MattVanVleet"},
-  {"id":"syaffe", "name":"Steve Yaffe", "email":"+SteveYaffe"},
-  {"id":"wteam", "name":"Welcome Team", "email":"+WelcomeTeam"}
+  {"id":"dabney", "name":"Don Abney", "email":"dabney@pillartechnology.com"},
+  {"id":"mkaufmann", "name":"Mary Kaufmann", "email":"mkaufmann@pillartechnology.com"},
+  {"id":"mvanvleet", "name":"Matt VanVleet", "email":"mvanvleet@pillartechnology.com"},
+  {"id":"syaffe", "name":"Steve Yaffe", "email":"syaffe@pillartechnology.com"},
+  {"id":"wteam", "name":"Welcome Team", "email":"welcometeam@pillartechnology.com"}
   ]}

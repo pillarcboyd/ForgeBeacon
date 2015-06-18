@@ -172,15 +172,27 @@ test.describe('Home Page', function() {
       this.timeout(15000);
       var driver = new webdriver.Builder().forBrowser('firefox').build();
       request({
-      url: webAddress + 'send?userName=donAbney',
+      url: webAddress + 'send?userName=PersonAtDoor',
       json: true
       }, function (error, response, body) {
-          assert.equal(body.userName, "donAbney");
+          assert.equal(body.userName, "PersonAtDoor");
       });
       driver.close();
 
   });
 
+  test.it('Should return ID of dabney in JSON if dabney called with URL parameter of dabney', function() {
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      request({
+      url: webAddress + 'send?pillarPerson=dabney',
+      json: true
+      }, function (error, response, body) {
+          assert.equal(body.pillarPerson, "dabney");
+      });
+      driver.close();
+
+  });
 
 
   test.it('Returns JSON file for contact information', function() {
@@ -257,6 +269,22 @@ test.describe('Home Page', function() {
         driver.findElement(By.name("checkInBtn")).click()
         driver.findElement(By.id("visitorNameTest")).getAttribute("value").then(function(visitorQuery){
           assert.equal(visitorQuery, "Test Visitor");
+        });
+
+        driver.close();
+
+    });
+
+    test.it('E-mail of pillar person selected in dropdown populates in hidden text field', function() {
+        this.timeout(15000);
+        var driver = new webdriver.Builder().forBrowser('firefox').build();
+        driver.get(webAddress);
+
+        driver.findElement(By.id("visitorName")).sendKeys("Test Visitor");
+        driver.dropdownlist('#notifyDL').option("dabney");
+        driver.findElement(By.name("checkInBtn")).click()
+        driver.findElement(By.id("pillarPersonTest")).getAttribute("value").then(function(pillarPersonQuery){
+          assert.equal(pillarPersonQuery, "dabney");
         });
 
         driver.close();

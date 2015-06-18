@@ -6,17 +6,23 @@ $(document).ready(function(){
 
 
       var visitorName=document.getElementById('visitorName').value;
+      var pillarPerson=document.getElementById('notifyDL').value;
       var queryParam="?userName=" + visitorName;
 
       if(visitorName == "" ){
         queryParam += "Someone";
       }
 
+      queryParam += '&pillarPerson=' + pillarPerson;
 
       $.get("/send" + queryParam ,function(data){
 
         var dataText = data.userName;
         document.getElementById('visitorNameTest').value = dataText;
+
+        dataText = data.pillarPerson;
+        document.getElementById('pillarPersonTest').value = dataText;
+
 
       },"json");
 
