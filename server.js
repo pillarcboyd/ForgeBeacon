@@ -12,11 +12,11 @@ var url = require('url');
 app.get('/send',function(req,res){
   var parameter = url.parse(req.url,true).query;
   var userName = parameter.userName;
-  var pillarPerson = parameter.pillarPerson;
-  var pillarPersonEmail = process.env.mail_to + '+' + pillarPerson + '@pillartechnology.com'
+  var pillarPersonID = parameter.pillarPerson;
+
 
   console.log(parameter);
-  sendEmail.createEmail(pillarPersonEmail,userName);
+  sendEmail.createEmail(pillarPersonID,userName,function(){});
   res.writeHead(200, { 'Content-Type': 'application/json'  });
 
   res.end(JSON.stringify(parameter));

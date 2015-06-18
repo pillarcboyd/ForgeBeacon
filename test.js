@@ -12,12 +12,14 @@ By = require('selenium-webdriver').By,
 should = require('should'),
 request = require('request'),
 url = require('url'),
+sendEmail = require('./sendEmail.js'),
 smallLayoutWidth = 730,
 smallLayoutHeight = 900;
 
 
 
 test.describe('Home Page', function() {
+
   test.it('Should serve correct page', function() {
     this.timeout(15000);
     var driver = new webdriver.Builder().forBrowser('firefox').build();
@@ -362,6 +364,10 @@ test.describe('Home Page', function() {
       driver.close();
 
     });
+
+
+
+
 
 
   });
