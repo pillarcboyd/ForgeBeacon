@@ -367,6 +367,36 @@ test.describe('Home Page', function() {
 
 
 
+    test.it('Textbox should have bottom margin', function() {
+
+      this.timeout(15000);
+      var driver = new webdriver.Builder().forBrowser('firefox').build();
+      driver.get(webAddress);
+
+
+      driver.findElement(By.id("visitorName")).getCssValue("margin-bottom").then(function(textboxMargine){
+        assert.equal(textboxMargine,'10px');
+      });
+
+      driver.close();
+
+    });
+
+
+        test.it('Drobdown should have bottom margin', function() {
+
+          this.timeout(15000);
+          var driver = new webdriver.Builder().forBrowser('firefox').build();
+          driver.get(webAddress);
+
+
+          driver.findElement(By.id("notifyDL")).getCssValue("margin-bottom").then(function(textboxMargine){
+            assert.equal(textboxMargine,'10px');
+          });
+
+          driver.close();
+
+        });
 
 
 

@@ -10,7 +10,14 @@
 
 .roundedTextInput{
 	border-radius: 5px;
+}
 
+#visitorName{
+	margin-bottom: 10px;
+}
+
+#notifyDL{
+	margin-bottom: 10px;
 }
 
 
