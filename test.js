@@ -75,7 +75,7 @@ test.describe('Home Page', function() {
       driver.get(webAddress);
 
       driver.findElement(By.xpath("//*[@id=\"titleBar\"]/span/img")).getAttribute("src").then(function(btnText){
-        assert.equal(btnText,'http://localhost:8080/images/pillar_logo.png');
+        assert.equal(btnText, webAddress + 'images/pillar_logo.png');
       });
       driver.close();
 
@@ -102,11 +102,11 @@ test.describe('Home Page', function() {
       driver.get(webAddress);
 
       driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
-        assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+        assert.equal(btnText, webAddress + 'images/frontdoor.jpg');
         driver.dropdownlist('#notifyDL').option("dabney");
         driver.findElement(By.name("checkInBtn")).click();
         driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
-          assert.equal(btnText,'http://localhost:8080/images/SeatNSculpture.JPG');
+          assert.equal(btnText, webAddress + 'images/SeatNSculpture.JPG');
       	});
       });
       driver.close();
@@ -119,7 +119,7 @@ test.describe('Home Page', function() {
       driver.get(webAddress);
 
       driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(btnText){
-        assert.equal(btnText,'http://localhost:8080/images/frontdoor.jpg');
+        assert.equal(btnText,webAddress + 'images/frontdoor.jpg');
       });
       driver.close();
 
@@ -328,7 +328,7 @@ test.describe('Home Page', function() {
 
       driver.dropdownlist('#notifyDL').option("dabney");
       driver.findElement(By.xpath("//*[@id=\"features\"]/div/div/div[1]/section/a/img")).getAttribute("src").then(function(imgSrc){
-         assert.equal(imgSrc,'http://localhost:8080/images/dabney.jpg');
+         assert.equal(imgSrc,webAddress + 'images/dabney.jpg');
       });
 
       driver.close();
