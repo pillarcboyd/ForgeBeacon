@@ -132,7 +132,7 @@ test.describe('Home Page', function() {
       driver.dropdownlist('#notifyDL').option("dabney");
       driver.findElement(By.name("checkInBtn")).click();
       driver.findElement(By.id("topMsg")).getAttribute("innerHTML").then(function(message){
-        assert.equal(message,'Thank you! Please have a seat. We\'ll be right with you!');
+        assert.equal(message,'Thank you! Please have a seat.  Don Abney will be right with you!');
       });
       driver.close();
 

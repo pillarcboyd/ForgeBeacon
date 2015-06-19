@@ -1,7 +1,9 @@
 
 $(document).ready(function(){
     $("#checkInBtn").click(function(){
-      document.getElementById('topMsg').innerHTML="Thank you! Please have a seat. We'll be right with you!";
+
+      var dropDownName = $("#notifyDL option:selected").text();
+      document.getElementById('topMsg').innerHTML="Thank you! Please have a seat.  " + dropDownName + " will be right with you!";
       document.getElementById('imageDock').src = "images/SeatNSculpture.JPG";
 
 
